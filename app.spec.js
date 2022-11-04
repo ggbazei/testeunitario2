@@ -53,5 +53,37 @@ describe("Conjunto de testes app",()=>{
     
         
     });
+    it("ao listar os clientes retornar 200e os dados",async()=>{
+        const databaseSpy = jest.spyOn(database, 'buscaTodosDados');
+        databaseSpy.mockReturnValue(false);//
 
+      
+        //cenário
+        const esperado="false";
+
+        //execução
+        const res=await request(app).get("/clientes/listar");
+                  
+        expect(res.text).toBe(esperado);
+        expect(res.status).toBe(200);
+        
+        
+    });
+
+    it("ao listar os clientes retornar 200e os dados",async()=>{
+        const databaseSpy = jest.spyOn(database, 'buscaDados');
+        databaseSpy.mockReturnValue(false);//
+
+      
+        //cenário
+        const esperado="false";
+
+        //execução
+        const res=await request(app).get("/clientes/listar/1");
+                  
+        expect(res.text).toBe(esperado);
+        expect(res.status).toBe(200);
+        
+        
+    });
 })
